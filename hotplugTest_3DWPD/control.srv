@@ -1,0 +1,18 @@
+AUTHOR = "yazhou.zhao"
+NAME = "linux hotplug_test "
+TIME = "LONG"
+TEST_CATEGORY = "Functional"
+TEST_CLASS = "General"
+TEST_TYPE = "server"
+
+DOC = """
+This test is about hotplug test.  It's a good way to test disk hotplug function.
+"""
+print machines
+def run(machine):
+    host=hosts.create_host(machine)
+    #at=autotest_remote.Autotest(host)
+    job.run_test('PblazeTestFramework/linux/hotplugTest_3DWPD',host=host)
+    #host.run_test('sleeptest',host=host)
+
+job.parallel_simple(run,machines)
